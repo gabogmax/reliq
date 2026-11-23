@@ -1,0 +1,2047 @@
+/* =========================================
+   1. VARIÁVEIS GLOBAIS
+========================================= */
+
+:root {
+    --brown: #4c2114;
+    --blue: #78cbff;
+    --ice: #ecfbff;
+    --white: #ecfbff;
+    --ink: #442416;
+
+    --font: 'DM Sans', sans-serif;
+    --display: 'lust', 'lust-display', serif;
+}
+
+
+/* =========================================
+   2. RESET E CONFIGURAÇÕES GERAIS
+========================================= */
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    margin: 0;
+    color: var(--brown);
+    background: #ecfbff;
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+em {
+    font-style: normal;
+    color: var(--blue);
+}
+
+::selection {
+    background: var(--brown);
+    color: var(--white);
+}
+
+:focus-visible {
+    outline: 2px solid var(--brown);
+    outline-offset: 5px;
+}
+
+
+/* =========================================
+   3. CLASSES GERAIS
+========================================= */
+
+.eyebrow,
+.tiny-index,
+.hero-kicker,
+.header-edition,
+.menu-label,
+.back-link {
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: .16em;
+    line-height: 1.5;
+}
+
+.section-pad {
+    padding: 120px clamp(24px, 6vw, 112px);
+}
+
+.section-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: start;
+    margin-bottom: 0px;
+}
+
+.tiny-index {
+    opacity: .62;
+}
+
+
+/* =========================================
+   4. INDICADOR DE PROGRESSO
+========================================= */
+
+.page-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: var(--brown);
+    z-index: 120;
+    pointer-events: none;
+}
+
+
+/* =========================================
+   5. HEADER / CABEÇALHO
+========================================= */
+
+.site-header {
+    height: 84px;
+    padding: 0 clamp(24px, 4.8vw, 80px);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 90;
+    border-bottom: 1px solid rgba(102, 45, 26, .17);
+    background-color: transparent;
+}
+
+.brand,
+.footer-brand {
+    font-family: var(--display);
+    font-weight: 700;
+    letter-spacing: -.1em;
+    font-size: 26px;
+}
+
+.brand-dot {
+    font-family: var(--font);
+    font-size: 9px;
+    vertical-align: top;
+    letter-spacing: 0;
+    margin-left: 4px;
+}
+
+.header-edition {
+    margin-right: 6vw;
+}
+
+
+/* =========================================
+   6. BOTÃO DO MENU
+========================================= */
+
+.menu-toggle {
+    display: flex;
+    align-items: center;
+    gap: 19px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    color: inherit;
+    padding: 16px 0;
+    position: relative;
+    z-index: 100;
+}
+
+.menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 25px;
+}
+
+.menu-icon i {
+    height: 1.5px;
+    width: 100%;
+    background: currentColor;
+    transition: transform .3s;
+}
+
+.menu-open .menu-icon i:first-child {
+    transform: translateY(3.75px) rotate(45deg);
+}
+
+.menu-open .menu-icon i:last-child {
+    transform: translateY(-3.75px) rotate(-45deg);
+}
+
+
+/* =========================================
+   7. MENU OVERLAY
+========================================= */
+
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    background: var(--brown);
+    color: var(--white);
+    transform: translateY(-105%);
+    transition: transform .75s cubic-bezier(.76, 0, .24, 1);
+    visibility: hidden;
+}
+
+.menu-open .menu-overlay {
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.menu-open .site-header {
+    color: var(--white);
+    position: fixed;
+    border-color: #ecfbff30;
+}
+
+.menu-inner {
+    padding: 150px clamp(24px, 9vw, 140px) 60px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.overlay-nav {
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    margin: 38px 0;
+}
+
+.overlay-nav a {
+    font: 500 clamp(30px, 6vw, 78px)/1.4 var(--display);
+    border-bottom: 1px solid #ecfbff3d;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    transition: padding .3s, color .3s;
+}
+
+.overlay-nav a:hover {
+    padding-left: 18px;
+    color: var(--blue);
+}
+
+.overlay-nav a span {
+    font: 600 11px var(--font);
+}
+
+.menu-inner > p {
+    font-size: 13px;
+    opacity: .7;
+}
+
+
+/* =========================================
+   8. HERO / PÁGINA INICIAL
+========================================= */
+
+
+
+.hero-banner {
+    height: 100vh;
+    height: clamp(480px, 100svh, 1000px);
+    width: 100%;
+
+    position: relative;
+    isolation: isolate;
+    margin: 0;
+
+    overflow: hidden;
+    background: #182a32;
+}
+
+.hero-banner img,
+.hero-banner video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Degradê no topo para as informações do header ficarem legíveis sobre a foto */
+.hero-banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(8, 18, 24, .5), transparent 26%);
+}
+
+/* Tablet e celular: altura proporcional à largura para não cortar a logo da foto */
+@media (max-width: 1000px) {
+    .hero-banner {
+        height: clamp(300px, 70vw, 700px);
+    }
+}
+
+.hero-home {
+    background: var(--blue);
+    min-height: 200px;
+    padding: 125px clamp(24px, 4.8vw, 80px) 0;
+    overflow: hidden;
+    position: relative;
+    background-color: #78cbff;
+}
+
+
+
+.hero-kicker {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero-title-wrap {
+    z-index: 2;
+    height: 200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-title {
+    letter-spacing: -.105em;
+    white-space: nowrap;
+    text-align: center;
+    height: 150px;
+}
+
+.hero-reg {
+    font: 600 clamp(18px, 2.3vw, 40px) var(--font);
+    vertical-align: top;
+    letter-spacing: 0;
+    margin-left: .6em;
+}
+
+.hero-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 3;
+    margin: -13px auto 0;
+    text-align: center;
+}
+
+.hero-line p {
+    font: 500 clamp(38px, 7.2vw, 108px)/1.05 var(--display);
+    letter-spacing: -.055em;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0 auto;
+}
+
+.hero-line em {
+    color: var(--white);
+}
+
+.round-arrow {
+    border: 1px solid var(--brown);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 30px;
+    transition: .3s;
+}
+
+.round-arrow:hover {
+    background: var(--brown);
+    color: var(--white);
+    transform: rotate(45deg);
+}
+
+
+/* =========================================
+   9. IMAGENS DO HERO
+========================================= */
+
+/* Carrossel horizontal, imagens em proporção 3:4 */
+
+.hero-carousel {
+    margin-top: 20px;
+    padding-bottom: 28px;
+}
+
+.hero-carousel-track {
+    display: flex;
+    width: max-content;
+    gap: 10px;
+    animation: reliq-marquee 58s linear infinite;
+    will-change: transform;
+}
+
+.hero-carousel {
+    overflow: hidden;
+    width: 100%;
+    margin-top: clamp(64px, 8vw, 120px);
+    padding-bottom: 12px;
+}
+
+.hero-slide {
+    flex: 0 0 clamp(190px, 22vw, 310px);
+    aspect-ratio: 1598 / 2048;
+    margin: 0;
+    overflow: hidden;
+    background: var(--ice);
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@keyframes reliq-marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-50% - 5px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-carousel-track {
+        animation: none;
+    }
+}
+
+.hero-carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.hero-carousel-caption {
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: .16em;
+    line-height: 1.5;
+}
+
+.hero-carousel-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.hero-carousel-buttons button {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--brown);
+    border-radius: 50%;
+    background: transparent;
+    color: inherit;
+    font-size: 18px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.hero-carousel-buttons button:hover {
+    background: var(--brown);
+    color: var(--white);
+}
+
+
+/* =========================================
+   10. INTRODUÇÃO / ESSÊNCIA
+========================================= */
+
+.intro-section {
+    background: #ecfbff;
+}
+
+.intro-grid {
+    display: block;
+}
+
+.intro-visual {
+    position: relative;
+    overflow: hidden;
+    background: var(--ice);
+    width: 100%;
+    min-height: clamp(480px, 58vw, 820px);
+}
+
+.intro-visual img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.intro-visual .statement {
+    position: absolute;
+    top: clamp(20px, 2.5vw, 40px);
+    left: clamp(20px, 2.5vw, 40px);
+    right: 20px;
+    font-size: clamp(30px, 4.2vw, 72px);
+}
+
+.intro-visual .statement em {
+    color: #2c6bd6;
+}
+
+.intro-image-copy {
+    position: absolute;
+    right: clamp(22px, 4vw, 64px);
+    bottom: clamp(22px, 4vw, 64px);
+    width: min(330px, 34%);
+    color: #ecfbff;
+    text-shadow: 0 1px 10px #0008;
+}
+
+.intro-image-copy .asterisk {
+    color: #ecfbff;
+}
+
+.intro-image-copy p {
+    font-size: clamp(14px, 1.2vw, 18px);
+    line-height: 1.6;
+    margin: 10px 0 0;
+}
+
+.statement {
+    font: 500 clamp(38px, 5.7vw, 96px)/1.17 var(--display);
+    letter-spacing: -.075em;
+}
+
+.statement span {
+    color: var(--brown);
+}
+
+.asterisk {
+    font-size: 45px;
+    color: var(--blue);
+}
+
+.essence-stories {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(48px, 7vw, 100px);
+    margin-top: clamp(48px, 7vw, 100px);
+}
+
+.essence-story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: clamp(28px, 5vw, 76px);
+}
+
+.essence-story-image {
+    width: 100%;
+    overflow: hidden;
+    background: var(--ice);
+}
+
+.essence-story-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1355 / 1916;
+    object-fit: cover;
+}
+
+.essence-story-copy {
+    max-width: 520px;
+    padding: clamp(8px, 2vw, 28px);
+}
+
+.essence-story-copy h2 {
+    font: 400 clamp(30px, 4vw, 58px)/1.08 var(--display);
+    letter-spacing: -.045em;
+    margin: 22px 0;
+    color: var(--brown);
+}
+
+.essence-story-copy p {
+    max-width: 420px;
+    font-size: clamp(15px, 1.25vw, 18px);
+    line-height: 1.75;
+}
+
+.text-link {
+    display: inline-flex;
+    gap: 35px;
+    border-bottom: 1px solid var(--brown);
+    padding-bottom: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .11em;
+}
+
+.text-link span {
+    font-size: 20px;
+}
+
+
+/* =========================================
+   11. SEÇÃO DE COLEÇÕES
+========================================= */
+
+.collections-section {
+    background: var(--ice);
+    justify-content: center;
+    align-items: center;
+}
+
+.collection-heading {
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 80px;
+    display: flex;
+    height: 220px;
+}
+
+.collection-heading h2 {
+    font: 500 clamp(55px, 8vw, 130px)/1.02 var(--display);
+    letter-spacing: -.09em;
+}
+
+.collection-heading h2 em {
+    color: var(--blue);
+}
+
+.collection-heading p {
+    font-size: clamp(16px, 1.45vw, 20px);
+    line-height: 1.65;
+    margin: 20px 0 33px;
+    text-align: center;
+}
+
+.collection-feature {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    align-items: center;
+    gap: 9%;
+    margin-bottom: 100px;
+}
+
+.collection-feature:last-child {
+    margin-bottom: 0;
+}
+
+.collection-two {
+    grid-template-columns: .8fr 1.2fr;
+}
+
+.collection-two .collection-image {
+    order: 2;
+}
+
+.collection-image {
+    height: clamp(340px, 48vw, 700px);
+    position: relative;
+    overflow: hidden;
+    background: var(--blue);
+}
+
+.collection-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s cubic-bezier(.2, .65, .3, 1);
+}
+
+.collection-feature:hover img {
+    transform: scale(1.075);
+}
+
+.image-stamp {
+    position: absolute;
+    bottom: 26px;
+    left: 26px;
+    background: var(--white);
+    padding: 13px 18px;
+    font-size: 11px;
+    letter-spacing: .12em;
+    font-weight: 700;
+}
+
+.collection-info h3 {
+    font: 500 clamp(44px, 5.7vw, 89px)/1.12 var(--display);
+    letter-spacing: -.08em;
+    margin: 32px 0 29px;
+}
+
+.collection-info h3 em {
+    color: #70a3f4;
+}
+
+.collection-info p {
+    font-size: 17px;
+    line-height: 1.7;
+    max-width: 350px;
+}
+
+.collection-link {
+    border-top: 1px solid var(--brown);
+    margin-top: 70px;
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+}
+
+.collection-link b {
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+
+/* =========================================
+   12. MANIFESTO / MARQUEE
+========================================= */
+
+.manifesto {
+    background: var(--brown);
+    color: #ecfbff;
+    overflow: hidden;
+}
+
+.marquee {
+    display: flex;
+    width: max-content;
+    padding: 25px 0;
+    gap: 0;
+    white-space: nowrap;
+    font: 600 clamp(45px, 8vw, 120px)/1.2 var(--display);
+    letter-spacing: -.08em;
+    color: var(--blue);
+    animation: marquee 35s linear infinite;
+}
+
+.marquee > div {
+    flex-shrink: 0;
+}
+
+@keyframes marquee {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.manifesto-inner {
+    text-align: center;
+    min-height: 630px;
+    padding: 150px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.manifesto h2 {
+    font: 500 clamp(39px, 6vw, 95px)/1.15 var(--display);
+    letter-spacing: -.08em;
+    margin: 32px 0;
+}
+
+.manifesto p {
+    max-width: 400px;
+    font-size: 17px;
+}
+
+
+/* =========================================
+   13. NOSSA HISTÓRIA
+========================================= */
+
+.story-section {
+    background: #ecfbff;
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 10%;
+    align-items: center;
+}
+
+.story-media {
+    height: 620px;
+    overflow: hidden;
+    background: var(--blue);
+}
+
+.story-media img {
+    height: 100%;
+    object-fit: cover;
+    transition: transform .9s;
+}
+
+.story-media:hover img {
+    transform: scale(1.04);
+}
+
+.story-content h2 {
+    font: 500 clamp(46px, 4vw, 85px)/1.13 var(--display);
+    letter-spacing: -.09em;
+    margin: 34px 0;
+}
+
+.story-content h2 em {
+    color: #70a3f4;
+}
+
+.story-content p {
+    max-width: 440px;
+    font-size: 18px;
+    line-height: 1.75;
+}
+
+.pill-link {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+    border: 1px solid var(--brown);
+    padding: 19px 23px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .11em;
+    margin-top: 35px;
+    transition: .3s;
+}
+
+.pill-link:hover {
+    background: var(--brown);
+    color: var(--white);
+}
+
+.pill-link span {
+    font-size: 21px;
+}
+
+
+/* =========================================
+   14. FOOTER
+========================================= */
+
+.footer {
+    background: var(--brown);
+    color: var(--white);
+    padding: 85px clamp(24px, 6vw, 112px) 27px;
+}
+
+.footer-cta {
+    display: block;
+    font: 500 clamp(48px, 8vw, 125px)/1.2 var(--display);
+    letter-spacing: -.08em;
+    margin: 45px 0 125px;
+}
+
+.footer-cta em {
+    color: var(--blue);
+}
+
+.footer-cta > span {
+    display: inline-block;
+    font-size: .5em;
+    vertical-align: top;
+    transition: transform .3s;
+}
+
+.footer-cta:hover > span {
+    transform: translate(10px, -10px);
+}
+
+.footer-bottom {
+    border-top: 1px solid #ecfbff42;
+    padding-top: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-bottom div {
+    display: flex;
+    gap: 26px;
+    font-size: 13px;
+}
+
+.footer-bottom > span {
+    font-size: 10px;
+    letter-spacing: .08em;
+}
+
+
+/* =========================================
+   15. PÁGINAS INTERNAS
+========================================= */
+
+.inner-hero {
+    background: var(--blue);
+    padding: 140px clamp(24px, 6vw, 112px) 55px;
+    min-height: 740px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.inner-hero-top,
+.inner-hero-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.inner-hero-top {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .14em;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.inner-hero > .eyebrow {
+    margin-top: auto;
+}
+
+.inner-hero h1 {
+    font: 500 clamp(55px, 10.1vw, 170px)/1.1 var(--display);
+    letter-spacing: -.09em;
+    margin: 36px 0 55px;
+}
+
+.inner-hero h1 em {
+    color: var(--white);
+}
+
+.inner-hero-bottom p {
+    font: 500 clamp(16px, 2vw, 28px) var(--display);
+    letter-spacing: -.05em;
+    max-width: 420px;
+}
+
+.inner-hero-bottom > span {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+}
+
+
+/* =========================================
+   16. CONCEITO EDITORIAL
+========================================= */
+
+.editorial-intro {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+}
+
+.editorial-intro p {
+    font: 500 clamp(25px, 3.1vw, 45px)/1.55 var(--display);
+    letter-spacing: -.05em;
+    max-width: 870px;
+}
+
+
+/* =========================================
+   17. GALERIA EDITORIAL
+========================================= */
+
+.editorial-gallery {
+    padding-top: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9vw 5vw;
+}
+
+.editorial-photo {
+    margin: 0;
+    overflow: hidden;
+}
+
+.editorial-photo img {
+    background: var(--ice);
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    transition: transform .9s;
+}
+
+.editorial-photo:hover img {
+    transform: scale(1.045);
+}
+
+.editorial-photo figcaption {
+    padding-top: 15px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+}
+
+.photo-1 {
+    grid-column: 1/3;
+    width: 77%;
+    justify-self: center;
+}
+
+.photo-1 img {
+    aspect-ratio: 1.35;
+}
+
+.photo-3 {
+    margin-top: 130px;
+}
+
+
+/* =========================================
+   18. PRÓXIMO PROJETO
+========================================= */
+
+.next-project {
+    background: var(--ice);
+}
+
+.next-project > a {
+    margin-top: 30px;
+    border-top: 1px solid #662d1a70;
+    display: block;
+    padding-top: 25px;
+}
+
+.next-project > a > span {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+}
+
+.next-project strong {
+    font: 500 clamp(32px, 5.4vw, 85px)/1.5 var(--display);
+    letter-spacing: -.08em;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.next-project b {
+    font-weight: 400;
+}
+
+
+/* =========================================
+   19. PÁGINA SOBRE
+========================================= */
+
+.about-image {
+    padding-top: 0;
+    padding-bottom: 0;
+    background: #ecfbff;
+}
+
+.about-image img {
+    height: clamp(300px, 55vw, 730px);
+    object-fit: cover;
+}
+
+.about-copy {
+    background: #ecfbff;
+}
+
+.about-copy .statement {
+    margin-bottom: 90px;
+}
+
+.about-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8vw;
+    margin-left: 25%;
+}
+
+.about-columns p {
+    font-size: 19px;
+    line-height: 1.8;
+}
+
+.about-values {
+    background: var(--blue);
+}
+
+.about-values > .eyebrow {
+    display: block;
+    margin-bottom: 60px;
+}
+
+.value-row {
+    border-top: 1px solid #662d1a65;
+    padding: 36px 0;
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+.value-row > span {
+    font-size: 11px;
+}
+
+.value-row h3 {
+    font: 500 clamp(25px, 3vw, 43px) var(--display);
+    letter-spacing: -.06em;
+}
+
+.value-row p {
+    max-width: 250px;
+    justify-self: end;
+}
+
+
+/* =========================================
+   20. ANIMAÇÕES DE REVELAÇÃO
+========================================= */
+
+.reveal {
+    align-items: center;
+    opacity: 0;
+    transform: translateY(42px);
+    transition:
+        opacity .85s,
+        transform .85s cubic-bezier(.18, .7, .2, 1);
+}
+
+.reveal.visible {
+    align-items: center;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   21. RESPONSIVIDADE — TABLETS
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .hero-home {
+        min-height: 800px;
+    }
+
+    .hero-title {
+        font-size: 17vw;
+    }
+
+    .hero-slide {
+        flex-basis: clamp(200px, 34vw, 300px);
+    }
+
+    .intro-visual {
+        min-height: 620px;
+    }
+
+    .essence-story {
+        gap: 28px;
+    }
+
+    .collection-feature,
+    .collection-two {
+        gap: 5%;
+    }
+
+    .story-media {
+        height: 480px;
+    }
+
+    .footer-bottom {
+        flex-wrap: wrap;
+    }
+
+}
+
+
+/* =========================================
+   22. RESPONSIVIDADE — CELULARES
+========================================= */
+
+@media (max-width: 700px) {
+
+    .site-header {
+        height: 68px;
+    }
+
+    .brand {
+        font-size: 22px;
+    }
+
+    .header-edition {
+        display: none;
+    }
+
+    .section-pad {
+        padding: 80px 22px;
+    }
+
+    .section-top {
+        margin-bottom: 50px;
+    }
+
+    .tiny-index {
+        display: none;
+    }
+
+
+    /* Essência */
+    .intro-visual {
+        min-height: 540px;
+    }
+
+    .intro-visual .statement {
+        font-size: clamp(34px, 9vw, 54px);
+    }
+
+    .intro-image-copy {
+        width: calc(100% - 44px);
+        right: 22px;
+        bottom: 22px;
+    }
+
+    .essence-stories {
+        gap: 52px;
+        margin-top: 52px;
+    }
+
+    .essence-story {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .essence-story-two .essence-story-copy {
+        order: 2;
+    }
+
+    .essence-story-two .essence-story-image {
+        order: 1;
+    }
+
+    .essence-story-copy {
+        padding: 8px 0;
+    }
+
+    /* Hero */
+
+    .hero-home {
+        padding: 103px 22px 0;
+        min-height: 735px;
+    }
+
+    .hero-kicker {
+        font-size: 8px;
+    }
+
+    .hero-title {
+        font-size: 17.4vw;
+        margin: 40px 0 0 -.05em;
+        letter-spacing: -.11em;
+    }
+
+    .hero-reg {
+        font-size: 12px;
+    }
+
+    .hero-line {
+        margin-top: 24px;
+        width: 100%;
+    }
+
+    .hero-line p {
+        font-size: clamp(25px, 7.5vw, 46px);
+        white-space: nowrap;
+    }
+
+    .hero-line p {
+        font-size: 22px;
+    }
+
+    .round-arrow {
+        height: 52px;
+        width: 52px;
+        font-size: 23px;
+    }
+
+
+    /* Imagens do Hero */
+
+    .hero-carousel {
+        margin-top: 80px;
+    }
+
+    .hero-slide {
+        flex-basis: 62vw;
+    }
+
+    .hero-carousel-caption {
+        font-size: 8px;
+        max-width: 60%;
+    }
+
+    .hero-carousel-buttons button {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    /* Introdução */
+
+    .intro-visual {
+        min-height: 340px;
+    }
+
+    .intro-visual .statement {
+        font-size: clamp(28px, 8vw, 48px);
+    }
+
+    .statement {
+        font-size: clamp(35px, 9vw, 64px);
+    }
+
+
+    /* Coleções */
+
+    .collection-heading {
+        display: block;
+        margin-bottom: 60px;
+    }
+
+    .collection-heading h2 {
+        font-size: clamp(49px, 12vw, 78px);
+    }
+
+    .collection-heading p {
+        margin-top: 25px;
+    }
+
+    .collection-feature,
+    .collection-two {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        margin-bottom: 90px;
+    }
+
+    .collection-two .collection-image {
+        order: 0;
+    }
+
+    .collection-image {
+        height: 450px;
+    }
+
+    .collection-info h3 {
+        font-size: clamp(42px, 10vw, 69px);
+        margin: 18px 0;
+    }
+
+    .collection-link {
+        margin-top: 32px;
+    }
+
+
+    /* Manifesto */
+
+    .marquee {
+        font-size: 52px;
+    }
+
+    .manifesto-inner {
+        min-height: 470px;
+        padding: 85px 24px;
+    }
+
+    .manifesto h2 {
+        font-size: clamp(32px, 8vw, 55px);
+    }
+
+
+    /* História */
+
+    .story-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .story-media {
+        height: 400px;
+    }
+
+    .story-content h2 {
+        font-size: 49px;
+    }
+
+
+    /* Footer */
+
+    .footer {
+        padding: 70px 22px 30px;
+    }
+
+    .footer-cta {
+        font-size: clamp(40px, 10vw, 70px);
+        margin: 35px 0 90px;
+    }
+
+    .footer-bottom {
+        display: grid;
+        gap: 25px;
+    }
+
+    .footer-bottom div {
+        flex-wrap: wrap;
+    }
+
+
+    /* Páginas internas */
+
+    .inner-hero {
+        padding: 105px 22px 45px;
+        min-height: 625px;
+    }
+
+    .inner-hero h1 {
+        font-size: clamp(50px, 11.5vw, 85px);
+    }
+
+    .inner-hero-top > span {
+        display: none;
+    }
+
+    .inner-hero-bottom > span {
+        max-width: 100px;
+        text-align: right;
+    }
+
+
+    /* Editorial */
+
+    .editorial-intro {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .editorial-intro p {
+        font-size: 25px;
+    }
+
+    .editorial-gallery {
+        gap: 48px;
+    }
+
+    .editorial-photo,
+    .photo-1 {
+        grid-column: 1/3;
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .editorial-photo img {
+        aspect-ratio: 4/4.5;
+    }
+
+    .photo-1 img {
+        aspect-ratio: 1.15;
+    }
+
+
+    /* Próxima coleção */
+
+    .next-project strong {
+        font-size: 32px;
+    }
+
+
+    /* Sobre */
+
+    .about-image {
+        padding: 0;
+    }
+
+    .about-copy .statement {
+        margin-bottom: 50px;
+    }
+
+    .about-columns {
+        margin: 0;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .about-columns p {
+        font-size: 17px;
+    }
+
+    .value-row {
+        grid-template-columns: 35px 1fr;
+        gap: 8px;
+    }
+
+    .value-row p {
+        grid-column: 2;
+        justify-self: start;
+    }
+
+
+    /* Menu */
+
+    .menu-inner {
+        padding: 110px 24px 45px;
+    }
+
+    .overlay-nav a {
+        font-size: clamp(27px, 7.2vw, 50px);
+    }
+
+}
+
+
+/* =========================================
+   23. RESPONSIVIDADE — TELAS PEQUENAS
+========================================= */
+
+@media (max-width: 380px) {
+
+    .hero-home {
+        min-height: 690px;
+    }
+
+    .hero-line p {
+        font-size: 18px;
+    }
+
+    .collection-image {
+        height: 360px;
+    }
+
+    .overlay-nav a {
+        font-size: 25px;
+    }
+
+}
+
+
+/* =========================================
+   24. ACESSIBILIDADE
+   Redução de movimento
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *:before,
+    *:after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+
+}
+
+
+
+/* Logo RELIQQ em SVG: herda a cor do texto (currentColor), então se adapta ao fundo */
+.brand-logo,
+.footer-logo,
+.hero-logo,
+.stamp-logo,
+.wipe-logo {
+    display: block;
+    height: auto;
+    aspect-ratio: 282.36 / 92.56;
+    fill: currentColor;
+}
+
+.brand-logo { width: 150px; }
+.footer-logo { width: clamp(150px, 16vw, 230px); }
+.hero-logo { width: clamp(170px, 17vw, 250px); }
+.stamp-logo { width: 64px; }
+.wipe-logo { width: clamp(220px, 34vw, 520px); }
+
+.brand,
+.footer-brand {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+}
+
+.hero-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Header claro, para páginas em que ele fica sobre uma foto */
+.site-header--light {
+    color: var(--white);
+    border-bottom-color: rgba(236, 251, 255, .3);
+}
+
+@media (max-width: 700px) {
+    .brand-logo { width: 118px; }
+    .hero-logo { width: 150px; }
+}
+
+/* Ajuste da seção: coleção customizada em largura total */
+#colecoes .collection-feature.collection-two {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 34px;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+#colecoes .collection-info {
+    order: 0;
+    width: 100%;
+}
+
+#colecoes .collection-info .eyebrow {
+    display: block;
+    font-size: 11px;
+    letter-spacing: .16em;
+    font-weight: 700;
+}
+
+#colecoes .collection-info h3 {
+    font-size: clamp(52px, 8vw, 112px);
+    line-height: .98;
+    margin: 16px 0 18px;
+    letter-spacing: -.075em;
+}
+
+#colecoes .collection-info p {
+    max-width: 560px;
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+#colecoes .collection-link {
+    max-width: 560px;
+    margin-top: 28px;
+}
+
+#colecoes .collection-image {
+    order: 1;
+    width: 100%;
+    height: clamp(360px, 58vw, 760px);
+}
+
+@media (max-width: 768px) {
+    #colecoes .collection-feature.collection-two {
+        gap: 24px;
+    }
+
+    #colecoes .collection-info h3 {
+        font-size: clamp(44px, 11vw, 72px);
+    }
+
+    #colecoes .collection-image {
+        height: 430px;
+    }
+}
+
+
+/* Ajustes solicitados: destaque centralizado e carrossel contínuo */
+.hero-line {
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-line p {
+    font-size: clamp(38px, 6vw, 88px);
+    text-align: center;
+}
+
+.hero-carousel-track,
+.hero-carousel-track:hover {
+    animation-play-state: running !important;
+}
+
+#colecoes .collection-info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#colecoes .collection-info h3 {
+    text-align: center;
+}
+
+#colecoes .collection-info p {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#colecoes .collection-link {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Correção de visibilidade do título da coleção customizada */
+#colecoes .collection-info .collection-title {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin: 16px 0 22px !important;
+    color: var(--brown) !important;
+    font-family: var(--display);
+    font-size: clamp(42px, 7vw, 96px) !important;
+    font-weight: 600;
+    line-height: 1.05 !important;
+    letter-spacing: -.055em !important;
+    text-align: center !important;
+    overflow: visible;
+}
+
+#colecoes .collection-info .collection-title em {
+    color: #70a3f4 !important;
+    font-style: normal;
+}
+
+@media (max-width: 700px) {
+    #colecoes .collection-info .collection-title {
+        font-size: clamp(36px, 9vw, 58px) !important;
+    }
+}
+
+
+/* FIX DEFINITIVO — título da coleção customizada */
+#colecoes .collection-info h2.collection-title {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 20 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 1.1em !important;
+    margin: 16px auto 22px !important;
+    padding: 0 !important;
+    color: #4c2114 !important;
+    font-family: var(--display, Georgia, serif) !important;
+    font-size: clamp(42px, 7vw, 96px) !important;
+    font-weight: 600 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -.055em !important;
+    text-align: center !important;
+    text-indent: 0 !important;
+    text-transform: uppercase !important;
+    overflow: visible !important;
+    clip: auto !important;
+    transform: none !important;
+}
+@media (max-width: 700px) {
+    #colecoes .collection-info h2.collection-title {
+        font-size: clamp(34px, 9vw, 58px) !important;
+        line-height: 1.08 !important;
+    }
+}
+
+
+/* Ordem explícita da chamada da coleção: subtítulo, título e descrição */
+#colecoes .collection-info {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+#colecoes .collection-info .collection-eyebrow {
+    order: 1 !important;
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+}
+#colecoes .collection-info h2.collection-title {
+    order: 2 !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 14px auto 18px !important;
+    text-align: center !important;
+}
+#colecoes .collection-info .collection-description {
+    order: 3 !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 560px !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+}
+#colecoes .collection-info .collection-link {
+    order: 4 !important;
+}
+
+
+/* =========================================
+   COLEÇÃO CUSTOMIZADA — HERO E GALERIA FULL BLEED
+========================================= */
+.collection-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    color: #ecfbff;
+    background: #182a32 url("capa customizadas.png") center 42% / cover no-repeat;
+    min-height: min(900px, 100svh);
+}
+.collection-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(180deg, rgba(8, 18, 24, .5), transparent 26%),
+                linear-gradient(90deg, rgba(8, 18, 24, .58), rgba(8, 18, 24, .12) 78%),
+                linear-gradient(0deg, rgba(8, 18, 24, .42), transparent 55%);
+}
+.collection-hero .inner-hero-top,
+.collection-hero .inner-hero-bottom,
+.collection-hero > .eyebrow,
+.collection-hero h1 { position: relative; z-index: 1; }
+.collection-hero .inner-hero-top,
+.collection-hero .inner-hero-bottom,
+.collection-hero .inner-hero-top a,
+.collection-hero .inner-hero-top span,
+.collection-hero .inner-hero-bottom p,
+.collection-hero .inner-hero-bottom > span { color: #ecfbff; }
+.collection-hero h1 em { color: #ecfbff; }
+
+.editorial-gallery-full {
+    --gap: clamp(8px, 1.5vw, 18px);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    width: 100%;
+    padding: var(--gap);
+    margin: 0;
+}
+.gallery-group {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--gap);
+    align-items: stretch;
+}
+.gallery-group figure {
+    position: relative;
+    margin: 0;
+    min-width: 0;
+    overflow: hidden;
+    background: #ecfbff;
+}
+.gallery-group img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .8s ease;
+}
+.gallery-group figure:hover img { transform: scale(1.025); }
+.gallery-large { aspect-ratio: 1156 / 1391; }
+.gallery-stack {
+    display: grid;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    gap: var(--gap);
+    min-height: 0;
+}
+.gallery-stack figure { min-height: 0; }
+
+
+/* =========================================
+   SOBRE NÓS — CAPA E INTEGRANTES
+========================================= */
+
+.about-hero {
+    background: #182a32 url("capa-sobre.jpg") center 38% / cover no-repeat;
+}
+
+.member {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+    gap: clamp(36px, 8vw, 130px);
+    align-items: center;
+    background: var(--white);
+    padding-top: clamp(56px, 7vw, 100px);
+    padding-bottom: clamp(56px, 7vw, 100px);
+}
+
+.member--reverse {
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+}
+
+.member--reverse .member-photo {
+    order: 2;
+}
+
+.member-photo {
+    margin: 0;
+    overflow: hidden;
+    aspect-ratio: 4 / 5;
+    max-height: 880px;
+    width: 100%;
+    background: var(--blue);
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .9s;
+}
+
+.member-photo:hover img {
+    transform: scale(1.04);
+}
+
+.member-copy h2 {
+    font: 500 clamp(46px, 5.4vw, 92px)/1.1 var(--display);
+    letter-spacing: -.09em;
+    margin: 30px 0;
+}
+
+.member-copy h2 em {
+    color: #70a3f4;
+}
+
+.member-copy p {
+    max-width: 440px;
+    font-size: 18px;
+    line-height: 1.75;
+}
+
+@media (max-width: 800px) {
+    .member,
+    .member--reverse {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .member--reverse .member-photo {
+        order: 0;
+    }
+
+    .member-photo {
+        max-height: none;
+    }
+
+    .member-copy h2 {
+        font-size: clamp(44px, 13vw, 70px);
+    }
+
+    .member-copy p {
+        font-size: 17px;
+    }
+}
+
+/* Sobre nós — texto de origem centralizado */
+.about-copy .statement {
+    text-align: center;
+     padding-top: 48px;
+        padding-bottom: 40px;
+}
+
+.about-text {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-text p {
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+.about-text p + p {
+    margin-top: 28px;
+}
+
+@media (max-width: 800px) {
+    .about-text p {
+        font-size: 17px;
+    }
+}
+/* Sobre nós — compactar a seção "Nossa origem" */
+.about-copy .section-top {
+    margin-bottom: 0px;
+}
+
+.about-copy .statement {
+    font-size: clamp(0px, 4.2vw, 68px);  /* título menor */
+    line-height: 1.1;
+    margin-bottom: 0px;
+}
+
+.about-text p + p {
+    margin-top: 20px;
+}
+
+@media (max-width: 800px) {
+    .about-copy .section-top,
+    .about-copy .statement {
+        margin-bottom: 20px;
+    }
+}
